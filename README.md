@@ -50,6 +50,10 @@ In GitHub Actions Following Test will Execute UI, API
 
 Report will be Generated , View in GitHub Pages (Static Pages for Allure Report)
 
+IMPORTANT: To Enable Report Feature , Repo must be in Public Visibility
+
+Report URL: https://iamraajrsarwan.github.io/fe-api-airalo-cypress/index.html
+
 ```
 
 ## Report Allure
