@@ -47,7 +47,7 @@ describe('Test Tariff Validation Suite', () => {
     cy.get(locators.packageLayout.priceValue)
       .invoke('text')
       .then((text) => {
-        expect(text.trim()).to.match(new RegExp(currencies.priceFormat.EUROPE));
+        expect(text.trim()).to.match(new RegExp(currencies.priceFormat.AMERICAS));
       });
   });
 });
