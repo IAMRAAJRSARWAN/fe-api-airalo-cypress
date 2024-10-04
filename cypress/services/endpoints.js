@@ -4,6 +4,7 @@ export const Authentication = {
 
 export const Orders = {
   submitOrders: '/orders',
+  getOrderList:(orderId)=> `/orders/${orderId}`
 };
 
 export const eSIMs = {

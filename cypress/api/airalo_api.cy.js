@@ -7,7 +7,7 @@ import tariffs from '../fixtures/tariffs.json';
 const CLIENT_ID = Cypress.env('CLIENT_ID');
 const CLIENT_SECRET = Cypress.env('CLIENT_SECRET');
 
-let accessToken, simId, simPackageId;
+let accessToken, orderId, simId, simPackageId;
 
 const tariff = tariffs.tariffs[0];
 
@@ -68,15 +68,18 @@ describe('Test API Validation Suite', () => {
       //If any New Key Been Added/Modified Test Fails So we can Track Changes Properly or Use this for MergeRequest Test Check for DEV Team
       expect(response.body).to.have.deep.keys(Object.keys(OrdersResponse));
 
+      //Store OrderId
+      orderId = response.body.data.id
+
       //Store SimsId
       simId = response.body.data.sims[0]['id'];
       simPackageId = response.body.data.sims[0]['package_id'];
     });
   });
 
-  //Validating PackageID in eSim Package List //However this Test wil fail, Due to GET Endpoint Doesnt Contains "simable" Section
-  it.skip('GET Sim Packages Info and Validate POST Creation', () => {
-    const getEndpointUrl = Cypress.config('baseUrl') + Version.V2 + eSIMs.sims;
+  //Validating PackageID, Quantity in from OrderList
+  it('GET OrderList Info and Validate POST Creation', () => {
+    const getEndpointUrl = Cypress.config('baseUrl') + Version.V2 + Orders.getOrderList(orderId);
     authHeaders.Authorization = `Bearer ${accessToken}`;
 
     cy.request({
@@ -87,15 +90,15 @@ describe('Test API Validation Suite', () => {
       //StatusCode Assert
       expect(response.status).to.eq(statusCode.SUCCESS);
 
-      //Extracting SimsIDs
-      const simsPackageIds = response.body.data['simable'].map((simData) => simData.package_id);
-      //SimID Validation
-      expect(simsPackageIds.includes(simPackageId)).to.be.true;
+      //Order List Validation
+      expect(response.body.data.package_id).to.eq(tariff.packageId);
+      expect(response.body.data.quantity).to.eq(tariff.quantity);
+
     });
   });
 
   //Validating SimIDs in eSim List
-  it('GET Sim Packages Info and Validate POST Creation', () => {
+  it('GET eSim Packages Info and Validate POST Creation', () => {
     const getEndpointUrl = Cypress.config('baseUrl') + Version.V2 + eSIMs.sims;
     authHeaders.Authorization = `Bearer ${accessToken}`;
 
