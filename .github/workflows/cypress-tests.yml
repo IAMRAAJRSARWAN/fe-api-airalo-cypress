@@ -1,0 +1,44 @@
+name: Airalo Cypress Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18]
+
+    steps:
+      #Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      #Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      #Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      #Install Cypress
+      - name: Install Cypress
+        run: npm install cypress --save-dev
+
+      #Run Cypress UI Tests
+      - name: Run Cypress tests
+        run: npx cypress run
+
+      #Run Cypress API Tests
+      - name: Run Cypress tests
+        run: npx cypress run --env testType=api
