@@ -1,0 +1,21 @@
+{
+  "japan": [
+    {
+      "Title": "Moshi Moshi",
+      "Coverage": "Japan",
+      "Data": "1 GB",
+      "Validity": "7 Days",
+      "Price": "4.50"
+    }
+  ],
+  "tariffs": [
+    {
+      "quantity": 6,
+      "packageId": "merhaba-7days-1gb"
+    },
+    {
+      "quantityInvalid": 1000,
+      "packageIdInvalid": "areeba-30days-3gbs"
+    }
+  ]
+}
