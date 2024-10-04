@@ -1,0 +1,1 @@
+{"total":2,"items":[{"uid":"65662963e7e4d14513384ba97972b640","name":"Test API Validation Suite","statistic":{"failed":0,"broken":0,"skipped":0,"passed":9,"unknown":0,"total":9}},{"uid":"3a9e2ea0af9ca34444be9c4dbded7d65","name":"Test Tariff Validation Suite","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}}]}
