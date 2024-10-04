@@ -12,10 +12,6 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18]
-
     steps:
       #Checkout the repository code
       - name: Checkout code
@@ -24,8 +20,6 @@ jobs:
       #Set up Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
 
       #Install dependencies
       - name: Install dependencies
@@ -36,9 +30,9 @@ jobs:
         run: npm install cypress --save-dev
 
       #Run Cypress UI Tests
-      - name: Run Cypress tests
+      - name: Run Cypress UI Tests
         run: npx cypress run
 
       #Run Cypress API Tests
-      - name: Run Cypress tests
+      - name: Run Cypress API Tests
         run: npx cypress run --env testType=api

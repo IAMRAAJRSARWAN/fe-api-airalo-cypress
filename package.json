@@ -177,7 +177,9 @@
     "cy:open": "npx cypress open",
     "cy:run:ui": "npx cypress run",
     "cy:run:api": "npx cypress run --env testType=api",
-    "cy:allure:generate": "npx allure serve allure-results"
+    "cy:allure:generate": "npx allure serve allure-results",
+    "cy:run:ui:chrome": "npx cypress run --browser=chrome",
+    "cy:run:api:chrome": "npx cypress run --browser=chrome --env testType=api"
   },
   "repository": {
     "type": "git",
