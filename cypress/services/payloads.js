@@ -56,3 +56,32 @@ export const OrdersResponse = {
     message: '',
   },
 };
+
+export const OrderListResponse = {
+  "data": {
+    "id": 0,
+    "code": "",
+    "package_id": "",
+    "currency": "",
+    "quantity": 0,
+    "type": "",
+    "description": "",
+    "esim_type": "",
+    "validity": 0,
+    "package": "",
+    "data": "",
+    "price": 0,
+    "text": null,
+    "voice": null,
+    "net_price": 0,
+    "created_at": "",
+    "manual_installation": "",
+    "qrcode_installation": "",
+    "installation_guides": {
+      "en": ""
+    }
+  },
+  "meta": {
+    "message": ""
+  },
+};

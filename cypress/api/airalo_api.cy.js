@@ -1,6 +1,6 @@
 import { Version, CommonHeaders, authHeaders } from '../services/global.js';
 import { Authentication, Orders, eSIMs } from '../services/endpoints.js';
-import { OrdersResponse } from '../services/payloads.js';
+import { OrderListResponse, OrdersResponse } from '../services/payloads.js';
 import { statusCode } from '../services/statuscodes.js';
 import tariffs from '../fixtures/tariffs.json';
 
@@ -66,6 +66,7 @@ describe('Test API Validation Suite', () => {
 
       //Additional Validation
       //If any New Key Been Added/Modified Test Fails So we can Track Changes Properly or Use this for MergeRequest Test Check for DEV Team
+      // Works as Contract Test
       expect(response.body).to.have.deep.keys(Object.keys(OrdersResponse));
 
       //Store OrderId
@@ -89,6 +90,11 @@ describe('Test API Validation Suite', () => {
     }).then((response) => {
       //StatusCode Assert
       expect(response.status).to.eq(statusCode.SUCCESS);
+
+      //Additional Validation
+      //If any New Key Been Added/Modified Test Fails So we can Track Changes Properly or Use this for MergeRequest Test Check for DEV Team
+      // Works as Contract Test
+      expect(response.body).to.have.deep.keys(Object.keys(OrderListResponse));
 
       //Order List Validation
       expect(response.body.data.package_id).to.eq(tariff.packageId);
