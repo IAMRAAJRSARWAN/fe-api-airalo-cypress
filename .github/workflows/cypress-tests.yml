@@ -17,20 +17,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Run SAST Scan for JavaScript/TypeScript Project
-        uses: AppThreat/sast-scan-action@1.0.2
-        with:
-          type: "js"
-
-      - name: Upload report
-        uses: actions/upload-artifact@v3
-        with:
-          name: scan-report
-          path: reports
-
       #Set up Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v3
+
+      # Install Semgrep
+      - name: Install Semgrep
+        run: |
+          npm install -g semgrep
+
+      # Run Semgrep SAST Scan
+      - name: Run Semgrep SAST analysis
+        run: |
+          semgrep --config auto 
+
+      # Upload Semgrep SAST Scan Report
+      - name: Upload Semgrep Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: semgrep-report
+          path: semgrep-results.json
 
       #Install dependencies
       - name: Install dependencies
