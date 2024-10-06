@@ -17,6 +17,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Run SAST Scan for JavaScript/TypeScript Project
+        uses: AppThreat/sast-scan-action@1.0.2
+        with:
+          type: "js"
+
+      - name: Upload report
+        uses: actions/upload-artifact@v1
+        with:
+          name: scan-report
+          path: reports
+
       #Set up Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v3
