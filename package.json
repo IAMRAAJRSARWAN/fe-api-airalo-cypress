@@ -197,7 +197,8 @@
     "eslint": "^9.11.1",
     "eslint-plugin-cypress": "^3.5.0",
     "globals": "^15.10.0",
-    "prettier": "3.3.3"
+    "prettier": "3.3.3",
+    "semgrep": "^0.0.1"
   },
   "license": "ISC"
 }
