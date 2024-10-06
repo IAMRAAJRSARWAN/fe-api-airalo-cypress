@@ -28,7 +28,7 @@ jobs:
       # Run Semgrep SAST Scan
       - name: Run Semgrep SAST analysis
         run: |
-          npx semgrep --config auto 
+          npx semgrep --config auto --json --output semgrep-results.json
 
       # Upload Semgrep SAST Scan Report
       - name: Upload Semgrep Report
